@@ -1,0 +1,651 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Recommended PC Parts by Amount</title>
+	<meta name="title" content="Recommended PC Parts by Amount" />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src=" {{url_for('static',filename='jquery.onepage-scroll.js')}} "></script>
+  <link  rel='stylesheet' href=" {{url_for('static',filename='onepage-scroll.css')}} " type='text/css'>
+  <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      background: #E2E4E7;
+      padding: 0;
+      text-align: center;
+      font-family: 'open sans';
+      position: relative;
+      margin: 0;
+      height: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .wrapper {
+    	height: 100% !important;
+    	height: 100%;
+    	margin: 0 auto; 
+    	overflow: hidden;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+    
+    
+    h1, h2 {
+      width: 100%;
+      float: left;
+    }
+    h1 {
+      margin-top: 100px;
+      color: #000;
+      margin-bottom: 5px;
+      font-size: 70px;
+      letter-spacing: -4px;
+      font-weight: 100;
+    }
+    h1 span {
+      font-size: 26px;
+      margin: 0 5px;
+      text-transform: capitalize;
+      background: rgba(0,0,0,0.85);
+      display: inline-block;
+      color: #6D461D;
+      border-radius: 5px 5px;
+      -webkit-border-radius: 5px 5px;
+      -moz-border-radius: 5px 5px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+      padding: 3px 10px;
+    }
+    h2 {
+      color: #6D461D;
+      font-weight: 100;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    
+    .pointer {
+      color: #9b59b6;
+      font-family: 'Pacifico', cursive;
+      font-size: 30px;
+      margin-top: 15px;
+    }
+    code {
+      margin: 20px 1%;
+      float: left;
+      width: 48%;
+      height: 105px;
+      background: rgba(0,0,0,0.1);
+      border: rgba(0,0,0,0.05) 5px solid;
+      border-radius: 5px;
+      padding:5px;
+      color: white;
+      text-align: center;
+      font-size: 15px;
+      margin-top: 25px;
+      display: block;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    }
+    code.html {
+      color: #7EC9E6;
+    }
+    code.js {
+      color: #FFAD00;
+    }
+
+    .main {
+      float: left;
+      width: 100%;
+      margin: 0 auto;
+    }
+    
+    .main h1 {
+      padding:150px 50px;
+      float: left;
+      width: 100%;
+      font-size: 45px;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      font-weight: 100;
+      color: white;
+      margin: 0;
+    }
+   
+    .main h1.demo1 {
+      background: #1ABC9C;
+    }
+    
+    .reload.bell {
+      font-size: 12px;
+      padding: 20px;
+      width: 45px;
+      text-align: center;
+      height: 47px;
+      border-radius: 50px;
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+    }
+    
+    .reload.bell #notification {
+      font-size: 25px;
+      line-height: 140%;
+    }
+    
+    .reload, .btn{
+      display: inline-block;
+      border: 4px solid #A2261E;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      background: #CC3126;
+      display: inline-block;
+      line-height: 100%;
+      padding: 0.7em;
+      text-decoration: none;
+      color: #fff;
+      width: 100px;
+      line-height: 140%;
+      font-size: 17px;
+      font-family: open sans;
+      font-weight: bold;
+    }
+    .reload:hover{
+      background: #444;
+    }
+    .btn {
+      width: 200px;
+      color: rgb(255, 255, 255);
+      border: 4px solid rgb(0, 0, 0);
+      background: rgba(3, 3, 3, 0.75);
+    }
+    .clear {
+      width: auto;
+    }
+    .btn:hover, .btn:hover {
+      background: #444;
+    }
+    .btns {
+      width: 410px;
+      margin: 50px auto;
+    }
+    .credit {
+      text-align: center;
+      color: rgba(0,0,0,0.5);
+      padding: 10px;
+      width: 410px;
+      clear: both;
+    }
+    .credit a {
+      color: rgba(0,0,0,0.85);
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    .back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-align: center;
+      display: block;
+      padding: 7px;
+      width: 100%;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.25);
+      font-weight: bold;
+      font-size: 13px;
+      color: #000;
+      -webkit-transition: all 500ms ease-in-out;
+      -moz-transition: all 500ms ease-in-out;
+      -o-transition: all 500ms ease-in-out;
+      transition: all 500ms ease-in-out;
+    }
+    .back:hover {
+      color: black;
+      background: rgba(255, 255, 255, 0.5);
+    }
+    
+    header {
+      position: relative;
+      z-index: 10;
+    }
+    .main section .page_container {
+      position: relative;
+      top: 25%;
+      margin: 0 auto 0;
+      max-width: 950px;
+      z-index: 3;
+    }
+    .main section  {
+      overflow: hidden;
+    }
+    
+    .main section > img {
+      position: absolute;
+      max-width: 100%;
+      z-index: 1;
+    }
+    
+    .main section.page1 {
+      background:rgb(23, 217, 200 , 0.5);
+
+      background-image: linear-gradient(
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.2)
+      ), url(../static/pc.jpg);
+      background-size: 2500px;
+    }
+    .main section.page1 h1 {
+      text-align: left;
+      padding: 0;
+      margin-bottom: 15px;
+      font-size: 70px;
+      color: black;
+      
+    }
+    .main section.page1 h2 {
+      color: rgba(0,0,0,0.85);
+      text-align: center;
+      width: 435px;
+      line-height: 160%;
+      background:rgba(255, 255, 255, 0.2);
+    }
+    .main section .page_container .btns {
+      clear: both;
+      float: left;
+      text-align: center;
+      width: 435px;
+    }
+    .main section .page_container .btns a{
+      text-align: center;
+    }
+    .main section.page2 {
+      background: #8b8b8b;
+    }
+    .main section.page2 > img {
+      position: absolute;
+      top: -300px;
+      left: 50%;
+      margin-left: -1095px;
+    }
+    .main section.page2 .page_container {
+      margin-top: -200px;
+      overflow: hidden;
+    }
+    .main section.page2 h1 {
+      text-align: center;
+      padding: 0;
+      margin-bottom: 15px;
+      font-size: 30px;
+      letter-spacing: -1px;
+      color: white;
+    }
+    .main section.page2 h2 {
+      color: rgba(255,255,255,0.85);
+      font-size: 15px;
+      text-align: center;
+      line-height: 160%;
+      font-weight: 100;
+    }
+    .intelImg{
+      content:url(../static/intel.jpg);
+      height:160px;
+      width:240px;
+    }
+    .amdImg{
+      content:url(../static/amd.png);
+      height:160px;
+      width:240px;
+    }
+    .amtelImg{
+      content:url(../static/amtel.jpg);
+      height:160px;
+      width:240px;
+    }
+    .nvidiaImg{
+      content:url(../static/nvidia.jpg);
+      height:160px;
+      width:240px;
+    }
+    .radeonImg{
+      content:url(../static/radeon.jpg);
+      height:160px;
+      width:240px;
+    }
+    .nviradImg{
+      content:url(../static/nvirad.jpg);
+      height:160px;
+      width:240px;
+    }
+    .gameImg{
+      content:url(../static/game.jpg);
+      height:160px;
+      width:240px;
+    }
+    .broadcastImg{
+      content:url(../static/broadcast.jpg);
+      height:160px;
+      width:240px;
+    }
+    .bothImg{
+      content:url(../static/both.png);
+      height:160px;
+      width:240px;
+    }
+    [type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+[type=radio] + div {
+  cursor: pointer;
+}
+[type=radio]:checked + div {
+  outline: 5px solid indigo;
+}
+
+    
+    .viewing-page-2 .back{
+      background: rgba(0, 0, 0, 0.25);
+      color: #FFF;
+      }
+    .main section.page3 {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    .main section.page3 .page_container {
+      overflow: hidden;
+      width: 500px;
+      right: -285px;
+    }
+    .main section.page3 h1 {
+      text-align: left;
+      padding: 0;
+      margin-bottom: 0;
+      font-size: 70px;
+      letter-spacing: -1px;
+      color: black;
+    }
+    .main section.page3 h2 {
+      color: rgba(0,0,0,0.85);
+      text-align: left;
+      line-height: 160%;
+      font-weight: 100;
+      font-size: 21px;
+    }
+    
+    body.disabled-onepage-scroll .onepage-wrapper  section {
+      min-height: 100%;
+      height: auto;
+    }
+    
+    body.disabled-onepage-scroll .main section .page_container, body.disabled-onepage-scroll .main section.page3 .page_container  {
+      padding: 20px;
+      margin-top: 150px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    
+    body.disabled-onepage-scroll  section .page_container h1{
+      text-align: center;
+      font-size: 50px;
+    }
+    body.disabled-onepage-scroll section .page_container h2, body.disabled-onepage-scroll section .page_container .credit, body.disabled-onepage-scroll section .page_container .btns{
+      text-align: center;
+      width: 100%;
+    }
+    
+    body.disabled-onepage-scroll .main section.page1 > img {
+      position: absolute;
+      width: 80%;
+      left: 10%;
+    }
+    
+    body.disabled-onepage-scroll .main section > img {
+      position: relative;
+      max-width: 80%;
+      bottom: 0;
+    }
+    body.disabled-onepage-scroll code {
+      width: 95%;
+      margin: 0 auto 25px;
+      float: none;
+      overflow: hidden;
+    }
+    
+    body.disabled-onepage-scroll .main section.page3 .page_container {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      right: 0;
+    }
+	</style>
+  <style>
+  .container{
+    width: 500px;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px 20px;
+    border-radius: 5px;
+  }
+  input[type="range"]{
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: block;
+    width: 80%;
+    height: 8px;
+    background-color: #d5d5d5;
+    border-radius: 8px;
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-runnable-track{
+    -webkit-appearance: none;
+    height: 8px;
+  }
+  input[type="range"]::-moz-track{
+    -moz-appearance: none;
+    height: 8px;
+  }
+  input[type="range"]::-ms-track{
+    appearance: none;
+    height: 8px;
+  }
+  input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #3264fe;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    border: none;
+  }
+  input[type="range"]::-moz-range-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #3264fe;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    border: none;
+  }
+  input[type="range"]::-ms-thumb{
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #3264fe;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    border: none;
+  }
+  input[type="range"]:active::-webkit-slider-thumb{
+    background-color: #ffffff;
+    border: 3px solid #3264fe;
+  }
+  #slider-value{
+    width: 13%;
+    position: relative;
+    background-color: #3264fe;
+    color: #ffffff;
+    text-align: center;
+    font-family: "Roboto Mono",monospace;
+    padding: 10px 0;
+    border-radius: 5px;
+  }
+  </style>
+	<script>
+	  $(document).ready(function(){
+      $(".main").onepage_scroll({
+        sectionContainer: "section",
+        responsiveFallback: 600,
+        loop: true
+      });
+		});
+		
+    function next2(){
+      $(".main").moveTo(2);
+    }
+    function next3(){
+      $(".main").moveTo(3);
+    }
+	</script>
+</head>
+<body>
+  <div class="wrapper">
+	  <div class="main">
+	    
+      <section class="page1">
+        <div class="page_container">
+          <h1 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">컴퓨터 부품 추천</h1>
+          <h2>몇가지 필요한 옵션과 가격을 설정하면 맞춤 컴퓨터 부품을 알려드립니다!</h2>
+          <p class="credit"> 2022년 10월 기준 제품</p>
+          <div class="btns">
+  	        <a class="reload btn" href="javascript:void(0);" onclick="next2();">시작하기</a>
+  	      </div>
+  	    </div>
+  	    <!-- <img src="../static/phones.png" alt="phones"> -->
+      </section>
+	    
+	    <section class="page2">
+        <h1 style="margin-top: 50px;">선호하는 브랜드와 시스템 자원 중량을 정해주세요.</h1>
+        <h2>다음 브랜드들의 가격대비 성능의 차이는 많이 나지 않습니다. 특별히 선호하는 브랜드가 없다면 둘다를 선택해 주세요</h2>
+        <h2 style="font-size: 20px;">CPU</h2>
+
+        <div style="width: 750px; margin-left: auto;margin-right: auto;">
+          <label style="float: left;  margin-left: auto;margin-right: auto;">
+            <input type = "radio" name = "cpu" value = "The Fool"><div class="intelImg"></div></input>
+          </label>
+          <label style="float: left;  margin-left: 10px;margin-right: 10px;">
+            <input type = "radio" name = "cpu" value = "The Fool"><div class="amdImg"></div></input>
+          </label>
+          <label style="float: left;  margin-left: auto;margin-right: auto;">
+            <input type = "radio" name = "cpu" value = "The Fool"><div class="amtelImg"></div></input>
+          </label>
+        </div>
+
+        <h2 style="font-size: 20px; margin-top: 10px;">GPU</h2>
+        <div style="width: 750px; margin-left: auto;margin-right: auto;">
+          <label style="float: left;  margin-left: auto;margin-right: auto;">
+            <input type = "radio" name = "gpu" value = "The Fool"><div class="nvidiaImg"></div></input>
+          </label>
+          <label style="float: left;  margin-left: 10px;margin-right: 10px;">
+            <input type = "radio" name = "gpu" value = "The Fool"><div class="radeonImg"></div></input>
+          </label>
+          <label style="float: left;  margin-left: auto;margin-right: auto;">
+            <input type = "radio" name = "gpu" value = "The Fool"><div class="nviradImg"></div></input>
+          </label>
+        </div>
+
+        <h2 style="margin-top: 30px;">주 사용 용도에 따른 시스템 자원중량을 선택합니다. 기본적으로 맨오른쪽 밸런스형을 추천드립니다.</h2>
+        <div style="width: 750px; margin-left: auto;margin-right: auto;">
+          <label style="float: left;  margin-left: auto;margin-right: auto;">
+            <input type = "radio" name = "major" value = "The Fool"><div class="gameImg"></div></input>
+          </label>
+          <label style="float: left;  margin-left: 10px;margin-right: 10px;">
+            <input type = "radio" name = "major" value = "The Fool"><div class="broadcastImg"></div></input>
+          </label>
+          <label style="float: left;  margin-left: auto;margin-right: auto;">
+            <input type = "radio" name = "major" value = "The Fool"><div class="bothImg"></div></input>
+          </label>
+        </div>
+
+        <div class="btns" style="margin-top: 800px;">
+          <a class="reload btn" href="javascript:void(0);" onclick="next3();">다음</a>
+        </div>
+      </section>
+	    
+	    <section class="page3">
+        <h2 style="margin-top: 50px; text-align: center; font-size: 30px;">저장장치의 용량을 선택해 주세요</h2>
+
+          <div>
+            <h2 style="text-align: center; font-size: 15px;">SSD는 매우 빠른대신에 비싸고, HDD는 느린대신에 쌉니다. 기본적으로 HDD는 구성을 안해도 괜찮지만  SSD 250gb 이상을 추천드립니다.</h2>
+          </div>
+        <div style="width: 750px; margin-left: auto;margin-right: auto;">
+          <img src="../static/SSD.png" width="100px">
+          <select name="job">
+            <option value="">직업선택</option>
+            <option value="학생">학생</option>
+            <option value="회사원" selected="selected">회사원</option>
+            <option value="기타">기타</option>
+        </select>
+        <img src="../static/HDD.png" width="130px" style="margin-left: 50px;">
+        <select name="job">
+          <option value="">직업선택</option>
+          <option value="학생">학생</option>
+          <option value="회사원" selected="selected">회사원</option>
+          <option value="기타">기타</option>
+      </select>
+        </div>
+
+    
+        <h2 style="margin-top: 100px; text-align: center; font-size: 30px;">PC구성 예산을 설정해 주세요.</h2>
+        <div class="container">
+          <input type="range" id="my-slider" min="0" max="300" value="100" oninput="slider()">
+          <div id="slider-value" style="font-size: 15px;">0</div>
+      </div>
+      <!-- Script -->
+      <script type="text/javascript">
+  const mySlider = document.getElementById("my-slider");
+  const sliderValue = document.getElementById("slider-value");
+  
+  function slider(){
+      valPercent = (mySlider.value / mySlider.max)*100;
+      mySlider.style.background = `linear-gradient(to right, #3264fe ${valPercent}%, #d5d5d5 ${valPercent}%)`;
+      sliderValue.textContent = mySlider.value + " 만원";
+  }
+  slider();
+      </script>
+        <div style="width: 840px; margin-left: auto;margin-right: auto; margin-top: 400px;">
+              <div class="btns" style="float: left;">
+          <a class="reload btn" href="">초기화</a>
+        </div>
+        <div class="btns" style="float: left;">
+          <a class="reload btn" href="javascript:void(0);" onclick="next3();">추천해줘</a>
+        </div>
+      </div>
+      
+      
+      </section>
+    </div>
+  </div>
+</body>
+</html>
